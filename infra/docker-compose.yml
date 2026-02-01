@@ -50,6 +50,7 @@ services:
       - AUTH_SERVICE_URL=http://auth-service:3001
       - BRAND_SERVICE_URL=http://brand-management:3002
       - RIGHTS_SERVICE_URL=http://rights-tracking:3003
+      - OLLAMA_SERVICE_URL=http://76.13.113.206:32768
     deploy:
       resources:
         limits:
@@ -161,3 +162,4 @@ services:
 
 volumes:
   postgres_data:
+  ollama_data:

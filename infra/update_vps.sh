@@ -36,6 +36,14 @@ docker compose up -d christopher-vault
 echo "Updating Rights Tracking service..."
 docker compose up -d rights-tracking
 
+# 5. Update Ollama & Models
+if [ -f "rebuild_ollama.sh" ]; then
+    echo "Running Ollama Rebuild Script..."
+    bash rebuild_ollama.sh
+else
+    echo "Warning: rebuild_ollama.sh not found. Skipping Ollama update."
+fi
+
 echo "-----------------------------------"
 echo "Update Complete!"
 echo "Status:"
