@@ -50,11 +50,9 @@
     ],
     "publish": [
       {
-        "provider": "s3",
-        "bucket": "updates",
-        "endpoint": "http://76.13.113.206:9000",
-        "region": "us-east-1",
-        "acl": "public-read"
+        "provider": "github",
+        "owner": "josh643",
+        "repo": "tyaga"
       }
     ]
   },
