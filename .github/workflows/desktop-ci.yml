@@ -33,7 +33,7 @@ jobs:
       run: npm run test --workspace=tyaga-desktop
 
     - name: Build Electron App (Windows)
-      run: npm run build --workspace=tyaga-desktop
+      run: npm run build --workspace=tyaga-desktop -- --publish always
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
