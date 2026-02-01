@@ -1,0 +1,19 @@
+{
+  "name": "tyaga-monorepo",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "services/*",
+    "shared/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "start:dev": "docker-compose -f infra/docker-compose.yml up --build",
+    "start": "docker-compose -f infra/docker-compose.yml up",
+    "build:desktop": "npm run build --workspace=tyaga-desktop"
+  },
+  "devDependencies": {
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
+  }
+}

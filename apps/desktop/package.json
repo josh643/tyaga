@@ -1,0 +1,97 @@
+{
+  "name": "tyaga-desktop",
+  "version": "1.0.1",
+  "description": "Tyaga Desktop Application",
+  "author": "Tyaga Team",
+  "productName": "CCM_Dashboard",
+  "main": "dist-electron/main.js",
+  "build": {
+    "electronVersion": "28.3.3",
+    "appId": "com.tyaga.ccm",
+    "productName": "CCM_Dashboard",
+    "win": {
+      "target": "nsis",
+      "artifactName": "${productName}.exe"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "artifactName": "${productName}-${version}-mac.${ext}"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "output": "release-v6-new"
+    },
+    "files": [
+      "dist-electron/**/*",
+      "dist-renderer/**/*",
+      "package.json",
+      "!node_modules/7zip-bin",
+      "!node_modules/app-builder-bin"
+    ],
+    "publish": [
+      {
+        "provider": "s3",
+        "bucket": "updates",
+        "endpoint": "http://76.13.113.206:9000",
+        "region": "us-east-1",
+        "acl": "public-read"
+      }
+    ]
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "build:mac": "tsc && vite build && electron-builder --mac",
+    "build:mac:zip": "tsc && vite build && electron-builder --mac --config.mac.target=zip",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "7zip-bin": "^5.2.0",
+    "app-builder-bin": "^4.2.0",
+    "clsx": "^2.0.0",
+    "electron-log": "^5.4.3",
+    "electron-updater": "^6.7.3",
+    "lucide-react": "^0.292.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "jsdom": "^27.4.0",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-electron": "^0.15.4",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vitest": "^4.0.18"
+  }
+}
