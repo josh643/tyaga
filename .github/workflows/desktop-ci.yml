@@ -58,3 +58,17 @@ jobs:
       run: npm run build:mac --workspace=tyaga-desktop
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload Mac Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: mac-build
+        path: apps/desktop/release-v6-new/*.dmg
+        if-no-files-found: warn
+
+    - name: Upload Mac Zip
+      uses: actions/upload-artifact@v4
+      with:
+        name: mac-build-zip
+        path: apps/desktop/release-v6-new/*.zip
+        if-no-files-found: warn
