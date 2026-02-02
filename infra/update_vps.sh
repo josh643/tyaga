@@ -44,6 +44,11 @@ else
     echo "Warning: rebuild_ollama.sh not found. Skipping Ollama update."
 fi
 
+# 6. Rebuild and Update Web Interface
+echo "Updating Web Interface..."
+docker compose up -d --build --no-deps web-interface
+docker compose up -d --no-deps nginx
+
 echo "-----------------------------------"
 echo "Update Complete!"
 echo "Status:"
